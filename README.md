@@ -1,21 +1,33 @@
-# brotli plugin for webpack
+# brotli gzip plugin for webpack
+
+This is a fork of [brotli-webpack-plugin](https://github.com/mynameiswhm/brotli-webpack-plugin) that supports both gzip and brotli compression. I'm using it because the [official compression plugin](https://github.com/webpack-contrib/compression-webpack-plugin) no longer works and there [appears to be delays in patches](https://github.com/webpack-contrib/compression-webpack-plugin/pull/45). 
+I'm using it to build both gzip and brotli compressed files for serving over ASP.Net core using the [CompressedStaticFiles](https://github.com/AnderssonPeter/CompressedStaticFiles) middleware.
 
 This plugin compresses assets with [Brotli](https://github.com/google/brotli) compression algorithm using [iltorb](https://github.com/MayhemYDG/iltorb#brotliparams) library for serving it with [ngx_brotli](https://github.com/google/ngx_brotli) or such.
+
 
 ## Installation
 
 ```
-npm install --save-dev brotli-webpack-plugin
+npm install --save-dev brotli-gzip-webpack-plugin
 ```
 
 ## Usage
 
 ``` javascript
-var BrotliPlugin = require('brotli-webpack-plugin');
+var BrotliGzipPlugin = require('brotli-gzip-webpack-plugin');
 module.exports = {
 	plugins: [
-		new BrotliPlugin({
+		new BrotliGzipPlugin({
 			asset: '[path].br[query]',
+			algorithm: 'brotli',
+			test: /\.(js|css|html|svg)$/,
+			threshold: 10240,
+			minRatio: 0.8
+		}),
+		new BrotliGzipPlugin({
+			asset: '[path].gz[query]',
+			algorithm: 'gzip',
 			test: /\.(js|css|html|svg)$/,
 			threshold: 10240,
 			minRatio: 0.8

@@ -1,19 +1,19 @@
 {
-  "name": "brotli-webpack-plugin",
-  "version": "0.4.0",
+  "name": "brotli-gzip-webpack-plugin",
+  "version": "0.5.0",
   "author": {
     "name": "Ilia Saulenko",
     "email": "hi@mynameiswhm.ru",
     "url": "https://github.com/mynameiswhm"
   },
-  "description": "Prepare Brotli-compressed versions of assets to serve them with Content-Encoding: br",
+  "description": "Prepare Brotli or Gzip-compressed versions of assets to serve them different content encodings",
   "dependencies": {
-    "async": "0.2.x",
-    "webpack-sources": "^0.1.0"
+    "async": "2.5.0",
+    "webpack-sources": "^1.0.1"
   },
   "optionalDependencies": {
-    "brotli": "^1.3.1",
-    "iltorb": "^1.0.12"
+    "brotli": "^1.3.2",
+    "iltorb": "^1.3.5"
   },
   "homepage": "https://github.com/mynameiswhm/brotli-webpack-plugin",
   "repository": {
